@@ -4,5 +4,8 @@
   "memory": 128,
   "timeout": 5,
   "role": "arn:aws:iam::816787174437:role/lambdaTest_lambda_function",
-  "environment": {}
+  "environment": {},
+  "dependencies": {
+    "aws-sdk": "^2.x.x",
+  },
 }
