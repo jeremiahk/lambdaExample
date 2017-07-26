@@ -3,5 +3,5 @@ var aws = require('aws-sdk');
 console.log('starting function')
 exports.handle = function(e, ctx, cb) {
   console.log('processing event: %j', e)
-  cb(null, { hello: 'world ' + aws + ' test'  })
+  cb(null, { hello: 'world', aws})
 }
