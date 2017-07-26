@@ -1,0 +1,5 @@
+deploy:
+    stage: deploy
+    image: python:latest
+    script:
+        - apex deploy
