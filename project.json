@@ -1,0 +1,8 @@
+{
+  "name": "lambdaTest",
+  "description": "test lambda from CI",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::816787174437:role/lambdaTest_lambda_function",
+  "environment": {}
+}
