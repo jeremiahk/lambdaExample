@@ -6,4 +6,5 @@ deploy:
     stage: deploy
     image: python:latest
     script:
+        - npm install
         - apex deploy
