@@ -1,5 +1,6 @@
 variables:
     AWS_REGION: "us-east-1"
+    // AWS Username and Password are not stored in the .gitlab-ci.yml. They are stored securly in the project pipeline settings.
 
 deploy:
     stage: deploy
