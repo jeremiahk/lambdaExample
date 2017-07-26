@@ -6,6 +6,6 @@
   "role": "arn:aws:iam::816787174437:role/lambdaTest_lambda_function",
   "environment": {},
   "dependencies": {
-    "aws-sdk": "^2.x.x",
-  },
+    "aws-sdk": "^2.x.x"
+  }
 }
