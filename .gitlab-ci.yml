@@ -2,5 +2,5 @@ deploy:
     stage: deploy
     image: python:latest
     script:
-        - sudo curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh
+        - curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh
         - apex deploy
