@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "aws-sdk": "^2.94.0",
-    "chai": "^4.1.0",
     "chair": "0.0.0",
     "request": "^2.81.0"
   },
   "devDependencies": {
-    "mocha": "^3.5.0"
+    "aws-sdk-mock": "^1.7.0",
+    "chai": "^4.1.0",
+    "mocha": "^3.5.0",
+    "sinon": "^2.4.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec"
