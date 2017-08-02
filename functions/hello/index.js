@@ -1,7 +1,7 @@
-var aws = require('aws-sdk');
-
-console.log('starting function')
-exports.handle = function(e, ctx, cb) {
-  console.log('processing event: %j', e)
-  cb(null, { hello: 'world', aws})
-}
+exports.isSurveyComplete = function(surveyID) {
+  if (surveyID === '0') {
+    return false;
+  } else {
+    return true;
+  }
+};
