@@ -11,7 +11,7 @@ describe("Index Tests", function() {
 
     it('The index function should not have worked', function(done) {
       var surveyIsValid = Surveys.isSurveyComplete('0');
-      expect(surveyIsValid).to.be.true;
+      expect(surveyIsValid).to.be.false;
       done();
     });
   });
