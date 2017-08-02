@@ -7,4 +7,5 @@ deploy:
     image: python:latest
     script:
         - npm install
+        - npm test
         - apex deploy
