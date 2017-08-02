@@ -1,0 +1,25 @@
+{
+  "name": "lambdatest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chair": "0.0.0",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.amcoe.unisys.net:backend/lambdaTest.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
