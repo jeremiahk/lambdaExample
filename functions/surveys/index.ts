@@ -1,6 +1,6 @@
 // var AWS = require('aws-sdk');
 
-export function hello(event, context, callback) {  
+export function handler(event, context, callback) {  
   callback(null, { 
     message: 'Hello from TypeScript!', 
     event
