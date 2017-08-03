@@ -10,6 +10,5 @@ deploy:
     script:
         - npm install
         - npm run build
-        - cd functions/Surveys/ && ls
         - npm test
         - apex deploy
