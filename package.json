@@ -15,11 +15,12 @@
     "aws-sdk-mock": "^1.7.0",
     "chai": "^4.1.0",
     "mocha": "^3.5.0",
-    "sinon": "^2.4.1"
+    "sinon": "^2.4.1",
+    "typescript": "^2.4.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec", 
-    "build": "tsc",
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "build": "node_modules/.bin/tsc",
     "run": "lambda-local  -f ./functions/Surveys/index.js"
   },
   "repository": {
