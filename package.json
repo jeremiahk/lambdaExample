@@ -18,7 +18,8 @@
     "sinon": "^2.4.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "./node_modules/.bin/mocha --reporter spec", 
+    "run": "lambda-local  -f ./functions/Surveys/index.js"
   },
   "repository": {
     "type": "git",

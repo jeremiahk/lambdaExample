@@ -89,7 +89,7 @@ We use Gitlab runner as our CI service. You must add a couple of enviroment vari
 After that the CI service is like most other projects. We make sure our npm packages our up to date `npm install` Then we run our tests `npm test` Then we use Apex to deploy our lambda `apex deploy`.
 
 ## Run lambda locally.
-We are still working on this.
+We use the package [aws-lambda-local](https://github.com/Max-Kolodezniy/aws-lambda-local) to run the package
 
 ## Use typescript with the lambda.
 This should not be difficult to add since Typescript transpiles to javascript.

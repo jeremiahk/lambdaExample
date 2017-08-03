@@ -1,33 +1,42 @@
-var AWS = require('aws-sdk');
+// var AWS = require('aws-sdk');
 
-class Surveys {
-  constructor() {
-    this.foo = false;
-    this.DB = new AWS.DynamoDB();
-  }
+// console.log("Lambda started");
 
-  testAWSSpy() {
-    this.DB.listTables(null, function(err, data) {
-      this.foo = true;
-    });
-  }
+// class Surveys {
+//   constructor() {
+//     this.foo = false;
+//     this.DB = new AWS.DynamoDB();
+//   }
 
-  testAWSDynamoDBPutItem() {
-    var params = {
-      Item: {
-        'value': { 
-          S: 'failure' 
-        } 
-      }, 
-      TableName: 'Test'
-    }
+//   testAWSSpy() {
+//     this.DB.listTables(null, function(err, data) {
+//       this.foo = true;
+//     });
+//   }
 
-    this.DB.putItem(params, (err, data) => {
-      if (data == 'success') {
-        this.foo = true;
-      } 
-    });
-  }
-};
+//   testAWSDynamoDBPutItem() {
+//     var params = {
+//       Item: {
+//         'value': { 
+//           S: 'failure' 
+//         } 
+//       }, 
+//       TableName: 'Test'
+//     }
 
-module.exports = Surveys;
+//     this.DB.putItem(params, (err, data) => {
+//       if (data == 'success') {
+//         this.foo = true;
+//       } 
+//     });
+//   }
+// };
+
+// module.exports = Surveys;
+
+// console.log("lambda started");
+
+exports.handler = (event, context, callback) => {
+  // console.log("event is ", event, " ", context);
+  callback(null, "test");
+}
