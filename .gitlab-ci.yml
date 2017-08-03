@@ -10,7 +10,6 @@ deploy:
     script:
         - npm install
         - npm run build
-        - ls
-        - cd lambdaTest/functions/surveys/ && ls
+        - cd functions/surveys/ && ls
         - npm test
         - apex deploy
