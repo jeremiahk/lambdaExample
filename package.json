@@ -19,6 +19,7 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec", 
+    "build": "tsc",
     "run": "lambda-local  -f ./functions/Surveys/index.js"
   },
   "repository": {
