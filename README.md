@@ -1,19 +1,19 @@
 # AWS Lambda Help Guide
 
 This demo has the following goals...
-- [x] Create a lambda locally and see that on AWS.
+- [x] Create a lambda locally and be able to push that to AWS.
 - [x] Use TDD with the lambda.
 - [x] Mock AWS objects for our unit tests.
 - [x] Integrate with our CI (Gitlab) to push lambda to AWS if test pass.
-- [ ] Run lambda locally. 
+- [ ] Run lambda locally.
 - [ ] Use typescript with the lambda.
 
-Below we will work through each of these goals and see how the issue was solved. 
+Below we will work through each of these goals and see how the issue was solved.
 
-##### Note at this point in time, the code in the project does not follow the normal lambda structure. We are still testing some tools and frameworks. 
+##### Note at this point in time, the code in the project does not follow the normal lambda structure. We are still testing some tools and frameworks.
 
-## Create a lambda locally 
-We use a tool called [Apex](http://apex.run/) to create and deploy the lambda. You must have the AWS CLI tools installed on your machine, but then you can use Apex to initialize a basic lambda with 
+## Create a lambda locally
+We use a tool called [Apex](http://apex.run/) to create and deploy the lambda. You must have the AWS CLI tools installed, and have your credentials saved locally but then you can use Apex to initialize a basic lambda with
 
 ```
 apex init
@@ -41,15 +41,55 @@ Project description: My slothy project
 Setup complete, deploy those functions!
 ```
 
-Then you can deploy the lambda to AWS with 
+Then you can deploy the lambda to AWS with
 
     apex deploy
 
-You can trigger the lambda on AWS via th 
+You can trigger the lambda on AWS with
 
     apex invoke 'lambda name'
 
 ## Use TDD with the lambda.
 We are using [Mocha](https://mochajs.org/) and [Chai](http://chaijs.com/) to run our unit test. There is nothing special required to work with the lambda.
 
-## Mock AWS objects for our unit tests.
+## Mock and spying on AWS objects.
+#### Mocking
+When testing our code we dont want to call actual AWS services. We must mock these services so we can control what is returned. With this ability we can test all possible return objects in our unit tests. We use [aws-sdk-mock](https://www.npmjs.com/package/aws-sdk-mock) to achieve this.
+
+With aws-sdk-mock you must specify what service and what function you want to mock.
+
+```javascript
+AWSMock.mock('DynamoDB', 'putItem', function(params, callback) {
+    callback(null, 'success');
+})
+```
+
+In this example, when the code calls DynamoDB().putItem() the return closure passed into the function will receive a null error and the string 'success'. Normally you would want to return a JSON object that mimics what AWS sends back. This is just an example.
+
+There is a small issue we have not resolved with this mocking package. You must setup your mocking functions before the aws-sdk is instantiated inside your code.
+
+#### Spying
+You can also use a spying framework with aws-sdk-mock. We are using [Sinon](http://sinonjs.org).
+
+```javascript
+var listTableSpy = sinon.spy();
+AWSMock.mock('DynamoDB', 'listTables', listTableSpy);
+
+var surveys = new Surveys();
+surveys.testAWSSpy();
+
+expect(listTableSpy.calledOnce).to.be.true;
+```
+
+In this example you create the Sinon spy and insert it into DynamoDB.listTables function. In testAWSSpy() function we are calling listTables. The we can assert that the spy has been called once.
+
+## Integrate with our CI (Gitlab) to push lambda to AWS if test pass.
+We use Gitlab runner as our CI service. You must add a couple of enviroment variables for it to work. The AWS_Region, AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. The key ID a secret must be added in the secure pipeline settings of the project. If we add them to the .gitlab-ci.yml file then they will be visible to everyone.
+
+After that the CI service is like most other projects. We make sure our npm packages our up to date `npm install` Then we run our tests `npm test` Then we use Apex to deploy our lambda `apex deploy`.
+
+## Run lambda locally.
+We are still working on this.
+
+## Use typescript with the lambda.
+This should not be difficult to add since Typescript transpiles to javascript.
