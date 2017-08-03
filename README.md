@@ -5,8 +5,8 @@ This demo has the following goals...
 - [x] Use TDD with the lambda.
 - [x] Mock AWS objects for our unit tests.
 - [x] Integrate with our CI (Gitlab) to push lambda to AWS if test pass.
-- [ ] Run lambda locally.
-- [ ] Use typescript with the lambda.
+- [x] Run lambda locally.
+- [x] Use typescript with the lambda.
 
 Below we will work through each of these goals and see how the issue was solved.
 
@@ -100,4 +100,34 @@ Or in the case of our example project you can use
 You can see we have added the run script to the package.json
 
 ## Use typescript with the lambda.
-This should not be difficult to add since Typescript transpiles to javascript.
+This readme will not explain how to use typescript. To read more about it go [here](https://www.typescriptlang.org/)
+
+```typescript
+export function handle(event, context, callback) {  
+  callback(null, {
+    message: 'Hello from TypeScript',
+    event
+  });
+};
+```
+
+The typescript above gets compiled down to..
+
+```javascript
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function handler(event, context, callback) {
+    callback(null, {
+        message: 'Hello from TypeScript!',
+        event: event
+    });
+}
+exports.handle = handler;
+;
+//# sourceMappingURL=index.js.map
+```
+
+Note you must name your function handle for it to work correctly on AWS.
+
+The command `npm run build` has been added to the package.json. This command is called by gitlab-runner before pushing the code to AWS.
