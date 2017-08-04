@@ -12,6 +12,7 @@
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "aws-lambda-local": "^1.0.15",
     "aws-sdk-mock": "^1.7.0",
     "chai": "^4.1.0",
     "mocha": "^3.5.0",
@@ -21,7 +22,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
     "build": "node_modules/.bin/tsc",
-    "run": "lambda-local  -f ./functions/Surveys/index.js"
+    "run": "./node_modules/.bin/lambda-local  -f ./functions/surveys/index.js"
   },
   "repository": {
     "type": "git",

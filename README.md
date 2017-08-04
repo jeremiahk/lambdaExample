@@ -89,9 +89,9 @@ We use Gitlab runner as our CI service. You must add a couple of enviroment vari
 After that the CI service is like most other projects. We make sure our npm packages our up to date `npm install` Then we run our tests `npm test` Then we use Apex to deploy our lambda `apex deploy`.
 
 ## Run lambda locally.
-We use the package [aws-lambda-local](https://github.com/Max-Kolodezniy/aws-lambda-local) to run the package. You must install the package globally. It prints your output and lets you specify a custom event. To run the project use the command...
+We use the package [aws-lambda-local](https://github.com/Max-Kolodezniy/aws-lambda-local) to run the package. The github page says to install it globally, but we have installed it locally. This changes the command. It prints your output and lets you specify a custom event. To run the project use the command...
 
-    lambda-local -f index.js -e event.json
+    ./node_modules/.bin/lambda-local -f ./pathto/index.js -e ./pathto/event.json
 
 Or in the case of our example project you can use
 
